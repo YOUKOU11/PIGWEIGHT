@@ -28,7 +28,7 @@ if __name__ == '__main__':
     # model = ElasticNetCV(cv=2)
     model.fit(X_train, y_train)  # 线性回归训练
     print(model)
-    torch.save(model, "../model/normal_regression.pth")
+    torch.save(model, "../model/linger_regression.pth")
 
     a = model.intercept_  # 截距
     b = model.coef_  # 回归系数
