@@ -22,6 +22,10 @@ if __name__ == '__main__':
     model = LinearRegression()
 
     model.fit(X_train, y_train)  # 线性回归训练
+    # model = SVR(kernel=kernel)
+    # model = Ridge(alpha=1.0)
+    # model = Lars()
+    # model = ElasticNetCV(cv=2)
     print(model)
     torch.save(model, "../model/normal_regression.pth")
 

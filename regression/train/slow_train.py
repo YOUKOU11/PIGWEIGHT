@@ -18,10 +18,15 @@ if __name__ == '__main__':
                                                           shuffle=True,
                                                           random_state=10)
 
+
     # 调用线性规划包
     model = LinearRegression()
 
     model.fit(X_train, y_train)  # 线性回归训练
+    # model = SVR(kernel=kernel)
+    # model = Ridge(alpha=1.0)
+    # model = Lars()
+    # model = ElasticNetCV(cv=2)
     print(model)
     torch.save(model, "../model/slow_regression.pth")
 
@@ -36,8 +41,15 @@ if __name__ == '__main__':
     # print(Y_pred)
     y_true = []
     sum = 0
+    mean_pred = []
     for i, data in enumerate(y_valid):
         y_true.append(data)
+
+    # 平均值
+    for i, data in enumerate(X_valid):
+        sum = sum + np.fabs(X_valid[i][4] - y_true[i])
+        print(X_valid[i][4] - y_true[i])
+
     for i in range(len(Y_pred)):
         sum = sum + np.fabs(Y_pred[i] - y_true[i])
         print(Y_pred[i] - y_true[i])
