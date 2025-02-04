@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 from matplotlib import pyplot as plt
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, Ridge
 from sklearn.model_selection import train_test_split
 from dataloader import fast_dataloader
 
@@ -20,7 +20,10 @@ if __name__ == '__main__':
 
     # 调用线性规划包
     model = LinearRegression()
-
+    # model = SVR(kernel=kernel)
+    # model = Ridge(alpha=1.0)
+    # model = Lars()
+    # model = ElasticNetCV(cv=2)
     model.fit(X_train, y_train)  # 线性回归训练
     print(model)
     torch.save(model, "../model/fast_regression.pth")
